@@ -1,0 +1,26 @@
+/* Tùy chỉnh bảng */
+.table {
+    font-size: 1rem;
+    text-align: left;
+}
+
+.table th {
+    background-color: #f8f9fa; /* Màu nền xám nhạt */
+    text-align: left;
+    font-weight: bold;
+    width: 20%;
+}
+
+.table td {
+    word-break: break-word; /* Giữ định dạng cho dữ liệu dài */
+}
+
+/* Bo góc cho card */
+.card {
+    border-radius: 8px;
+}
+
+/* Bóng cho card */
+.shadow-sm {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}

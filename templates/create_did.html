@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Tạo DID{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Tạo và Đăng Ký DID</h2>
+    <div class="card mt-4">
+        <div class="card-body">
+            <button id="createDID" class="btn btn-primary w-100">Sinh và Đăng Ký DID</button>
+            <div id="didResult" class="mt-4"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('createDID').addEventListener('click', async () => {
+        try {
+            const response = await fetch('/create-and-register-did', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({})
+            });
+            const data = await response.json();
+            const didResultDiv = document.getElementById('didResult');
+            if (response.ok) {
+                didResultDiv.innerHTML = `<pre>${JSON.stringify(data.did_info, null, 2)}</pre>
+                                          <p class="text-success">${data.message}</p>`;
+            } else {
+                didResultDiv.innerHTML = `<pre>${JSON.stringify(data.did_info, null, 2)}</pre>
+                                          <p class="text-danger">${data.message}</p>
+                                          <pre>${JSON.stringify(data.error_details, null, 2)}</pre>`;
+            }
+        } catch (error) {
+            console.error("Lỗi:", error);
+            document.getElementById('didResult').innerHTML = `
+                <p class="text-danger">Lỗi: ${error.message}</p>
+            `;
+        }
+    });
+    
+</script>
+
+{% endblock %}

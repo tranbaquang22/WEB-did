@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Dashboard Quản Lý DID</h2>
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-header bg-success text-white">
+                    <h5 class="card-title">Tạo DID</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Tạo DID mới và quản lý DID Document của bạn.</p>
+                    <a href="/create-did-page" class="btn btn-primary">Tạo DID</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-header bg-info text-white">
+                    <h5 class="card-title">Danh Sách DID</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Xem danh sách tất cả các DID có trong hệ thống.</p>
+                    <a href="/list-dids" class="btn btn-primary">Xem Danh Sách</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-header bg-warning text-white">
+                    <h5 class="card-title">Xác Thực DID</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Nhập DID để kiểm tra thông tin và xác thực.</p>
+                    <a href="/verify-did-page" class="btn btn-primary">Xác Thực DID</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

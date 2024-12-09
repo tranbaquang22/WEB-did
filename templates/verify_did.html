@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Xác Thực DID{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Xác Thực DID</h2>
+    <form id="verifyDIDForm" class="mt-4">
+        <div class="mb-3">
+            <label for="did" class="form-label">Nhập DID</label>
+            <input type="text" class="form-control" id="did" placeholder="did:example:123">
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Xác Thực</button>
+    </form>
+    <div id="verificationResult" class="mt-4"></div>
+</div>
+
+<script>
+    document.getElementById('verifyDIDForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const did = document.getElementById('did').value;
+        const response = await fetch(`/verify-did/${did}`, { method: 'GET' });
+        const data = await response.json();
+        document.getElementById('verificationResult').innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+    });
+</script>
+{% endblock %}

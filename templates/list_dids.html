@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Danh Sách DID{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Danh Sách DID</h2>
+    <div class="mt-4">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>DID</th>
+                    <th>Verkey</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if dids %}
+                    {% for did in dids %}
+                        <tr>
+                            <td>{{ did.did }}</td>
+                            <td>{{ did.verkey }}</td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="2" class="text-center">Không có DID nào được tạo</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+        {% if error %}
+            <div class="alert alert-danger mt-4">{{ error }}</div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
